@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
+import { HighlighterDirective } from './highlighter.directive';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AboutComponent } from './about/about.component';
     AboutComponent,
     HomeComponent,
     ContactComponent,
+    HighlighterDirective,
   ],
   imports: [
     BrowserModule,

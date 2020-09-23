@@ -6,4 +6,10 @@ import { Component } from "@angular/core";
   styleUrls: ['./about.component.css']
 })
 
-export class AboutComponent {}
+export class AboutComponent {
+  heroName: string;
+
+  setHero(name: string) {
+    this.heroName = name;
+  }
+}

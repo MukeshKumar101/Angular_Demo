@@ -1,1 +1,45 @@
-<h2>About works!!</h2>
+<!-- Attribute Directives -->
+<section id="about-header" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <!-- Changes the background to green -->
+        <div class="display-4 py-2">Custom Directive</div>
+        <p appHighlighter>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, unde.
+        </p>
+        <div class="display-4 py-2">Without Directive</div>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos, quo.
+        </p>
+      </div>
+
+      <!-- structural Directives -->
+      <div class="col-sm-6 text-center">
+        <!-- switch case *ngSwitch -->
+        <div [ngSwitch]="heroName">
+          <p *ngSwitchCase="'spiderman'">Your Villain is Venom</p>
+          <p *ngSwitchCase="'Iron man'">Your Villain is Thanos</p>
+          <p *ngSwitchCase="'Thor'">Your Brother is your Enemy..LOL</p>
+        </div>
+        <div class="d-flex justify-content-around py-2">
+          <div>
+            <button (click)="setHero('spiderman')" class="btn btn-danger">
+              Set Spider
+            </button>
+          </div>
+          <div>
+            <button (click)="setHero('Iron man')" class="btn btn-success">
+              Set Armour
+            </button>
+          </div>
+          <div>
+            <button (click)="setHero('Thor')" class="btn btn-info">
+              Set Hammer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
