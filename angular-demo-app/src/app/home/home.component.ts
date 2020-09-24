@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
+  FormArray,
   FormControl,
   FormGroup,
   NgForm,
@@ -21,6 +22,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   showFormDetails(formDetails: NgForm) {
+    console.log(formDetails);
+    formDetails.reset();
+  }
+
+  autoFill(formDetails: NgForm) {
     formDetails.setValue({
       user: {
         username: 'Rex',
@@ -31,9 +37,7 @@ export class HomeComponent implements OnInit {
         confirmPassword: 'abc',
       },
     });
-    console.log(formDetails);
   }
-
   alterValue(form: NgForm) {
     form.form.patchValue({
       user: {
@@ -45,10 +49,16 @@ export class HomeComponent implements OnInit {
   comicForm = new FormGroup({
     characterName: new FormControl(null, Validators.required),
     universe: new FormControl(null, Validators.required),
-    ability: new FormControl(null, Validators.required),
+    abilities: new FormArray([
+      new FormControl(null)
+    ]),
   });
 
   saveHero() {
     console.log(this.comicForm);
+  }
+
+  onAddAbility() {
+    (<FormArray>this.comicForm.get('abilities')).push(new FormControl());
   }
 }

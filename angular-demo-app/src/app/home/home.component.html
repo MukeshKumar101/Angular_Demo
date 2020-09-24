@@ -52,26 +52,40 @@
                 />
               </div>
             </div>
-            <button
-              class="btn btn-success"
-              type="submit"
-              [disabled]="myform.invalid"
-            >
-              Submit
-            </button>
-            |
-            <button
-              class="btn btn-primary"
-              type="button"
-              (click)="alterValue(myform)"
-            >
-              Alter
-            </button>
+            <div class="d-flex justify-content-around">
+              <div class="">
+                <button
+                  class="btn btn-success"
+                  type="submit"
+                  [disabled]="myform.invalid"
+                >
+                  Submit
+                </button>
+              </div>
+              <div class="">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="alterValue(myform)"
+                >
+                  Alter
+                </button>
+              </div>
+              <div class="">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="autoFill(myform)"
+                >
+                  Auto Fill
+                </button>
+              </div>
+            </div>
           </form>
         </div>
         <div class="col-sm-6 py-3">
           <!-- Reactive Approach -->
-          <form [formGroup]="comicForm" (ngSubmit)='saveHero()'>
+          <form [formGroup]="comicForm" (ngSubmit)="saveHero()">
             <div class="form-group">
               <label for="name">Character Name</label>
               <input
@@ -88,15 +102,29 @@
                 formControlName="universe"
               />
             </div>
-            <div class="form-group">
-              <label for="abilities">Special Abilities</label>
-              <input
-                type="text"
-                class="form-control"
-                formControlName="ability"
-              />
+            <div formArrayName="abilities">
+              <div
+                *ngFor="
+                  let ability of comicForm.get('abilities')['controls'];
+                  let i = index
+                "
+                [formControlName]="i"
+              >
+                <div class="input-group py-2">
+                  <input type="text" class="form-control" placeholder="Superpower" />
+                  <span class="input-group-append">
+                    <button class="btn btn-success" (click)="onAddAbility()">
+                      +
+                    </button>
+                  </span>
+                </div>
+              </div>
             </div>
-            <button class="btn btn-danger" type="submit" [disabled]="comicForm.invalid" >
+            <button
+              class="btn btn-danger my-2  "
+              type="submit"
+              [disabled]="comicForm.invalid"
+            >
               Save
             </button>
           </form>
