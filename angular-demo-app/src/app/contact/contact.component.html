@@ -1,1 +1,26 @@
-<p>contact works!</p>
+<section id="contact-header" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <p>Your Name is: {{ myName }}</p>
+        <div class="d-flex justify-content-around">
+          <div>
+            <button class="btn btn-success" (click)="changeName('Bunny')">
+              Bunny
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-success" (click)="changeName('Rex')">
+              Rex
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-success" (click)="changeName('Max')">
+              Max
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

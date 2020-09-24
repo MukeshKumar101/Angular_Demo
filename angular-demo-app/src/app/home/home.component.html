@@ -1,28 +1,64 @@
-
 <!-- Registration -->
 <section id="registration" class="py-5">
   <div class="dark-overlay">
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-          <form>
-            <div class="form-group">
-              <label for="name" >Username</label>
-              <input type="text" class="form-control" />
+          <form (ngSubmit)="showFormDetails(myform)" #myform="ngForm">
+            <div ngModelGroup="user" #usergroup="ngModelGroup">
+              <div class="form-group">
+                <label for="name">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  ngModel
+                  name="username"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="email"
+                  ngModel
+                  required
+                  email
+                />
+              </div>
             </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" />
+            <p>Email is invalid</p>
+            <div ngModelGroup="passwordgroup" #passgroup="ngModelGroup">
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  ngModel
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Confirm Password</label>
+                <input
+                  name="confirmPassword"
+                  type="password"
+                  class="form-control"
+                  ngModel
+                  required
+                />
+              </div>
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label for="email">Confirm Password</label>
-              <input type="password" class="form-control" />
-            </div>
-            <button class="btn btn-success">Submit</button>
+            <button
+              class="btn btn-success"
+              type="submit"
+              [disabled]="myform.invalid"
+            >
+              Submit
+            </button>
+            <button class="btn btn-primary" type="button" (click)="alterValue(myform)">Alter</button>
           </form>
         </div>
       </div>
