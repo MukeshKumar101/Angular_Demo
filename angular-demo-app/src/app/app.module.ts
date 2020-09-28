@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { HighlighterDirective } from './highlighter.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ContactImageComponent } from './contact/contact-image/contact-image.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ContactComponent,
     HighlighterDirective,
+    ContactImageComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],

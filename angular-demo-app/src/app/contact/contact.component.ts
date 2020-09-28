@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -6,14 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit {
-  myName: string = '';
-  imgSrc: string;
-  constructor() {}
+  username: string = '';
+  cacheData: string;
 
   ngOnInit(): void {}
 
   changeName(name: string) {
-    this.myName = name;
-    console.log(name);
+    this.username = name;
+  }
+
+  onSetCache(data: string) {
+    this.cacheData = data;
   }
 }

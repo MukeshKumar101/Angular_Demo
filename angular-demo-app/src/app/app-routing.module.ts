@@ -7,6 +7,7 @@ import { AboutGaurd } from './about/about.gaurd.service';
 import { ContactResolverService } from './contact/contact-resolver.service';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { ContactImageComponent } from './contact/contact-image/contact-image.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

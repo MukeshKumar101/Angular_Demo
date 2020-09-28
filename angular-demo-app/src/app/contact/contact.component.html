@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6">
-        <p>Your Name is: {{ myName }}</p>
+        <p>Your Name is: {{ username }}</p>
         <div class="d-flex justify-content-around">
           <div>
             <button class="btn btn-success" (click)="changeName('Bunny')">
@@ -22,7 +22,8 @@
         </div>
       </div>
       <div class="col-6">
-        <img src="" alt="" class="img-fluid" height="50px" width="50px">
+        <app-contact-image [username]='username' (cacheEmitter)='onSetCache($event)'></app-contact-image>
+        <p>{{ cacheData }}</p>
       </div>
     </div>
   </div>
