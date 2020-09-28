@@ -17,16 +17,25 @@ export class HomeComponent implements OnInit {
   @ViewChild('usergroup') user: NgModelGroup;
   @ViewChild('passgroup') pass: NgModelGroup;
   isValid: boolean = false;
+  comicForm: FormGroup;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.comicForm = new FormGroup({
+      characterName: new FormControl(null, Validators.required),
+      universe: new FormControl(null, Validators.required),
+      abilities: new FormArray([
+        new FormControl()
+      ]),
+    });
+  }
 
-  showFormDetails(formDetails: NgForm) {
+  onShowFormDetails(formDetails: NgForm) {
     console.log(formDetails);
     formDetails.reset();
   }
 
-  autoFill(formDetails: NgForm) {
+  onAutoFill(formDetails: NgForm) {
     formDetails.setValue({
       user: {
         username: 'Rex',
@@ -38,7 +47,7 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-  alterValue(form: NgForm) {
+  onAlterValue(form: NgForm) {
     form.form.patchValue({
       user: {
         username: 'Mando',
@@ -46,19 +55,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  comicForm = new FormGroup({
-    characterName: new FormControl(null, Validators.required),
-    universe: new FormControl(null, Validators.required),
-    abilities: new FormArray([
-      new FormControl(null)
-    ]),
-  });
 
-  saveHero() {
+
+  onSaveHero() {
     console.log(this.comicForm);
   }
 
   onAddAbility() {
     (<FormArray>this.comicForm.get('abilities')).push(new FormControl());
+  }
+
+  onRemoveAbility(index: number) {
+    (<FormArray>this.comicForm.get('abilities')).removeAt(index);
   }
 }
